@@ -1,0 +1,21 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "myCommerce",
+    "description": "Documentação do projeto.",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "name": "Desenvolvedor",
+      "url": "https://github.com/Spinnafre",
+      "email": "davispenha@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "paths":{
+
+  }
+}
