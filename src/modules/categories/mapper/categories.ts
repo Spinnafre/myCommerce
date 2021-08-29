@@ -8,8 +8,6 @@ export class Category implements ICategory{
     id:string
     @Column()
     name:string
-    @OneToMany(type=>Product,category=>Category)
-    products:Product[]
     @CreateDateColumn()
     created_at:Date
     @UpdateDateColumn()

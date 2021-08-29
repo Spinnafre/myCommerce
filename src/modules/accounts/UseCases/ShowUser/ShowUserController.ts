@@ -1,6 +1,7 @@
 import { Response, Request } from 'express';
-import { IShowUserController } from "../../Protocols/showUser/IShowUsersController";
-import { IShowUserUserCase } from "../../Protocols/showUser/IShowUserUserCase";
+import { IShowUserController } from '../../Protocols/showUser/IShowUserController';
+import { IShowUserUserCase } from '../../Protocols/showUser/IShowUserUserCase';
+
 
 export class ShowUserController implements IShowUserController{
     constructor(private showUserUserCase:IShowUserUserCase){}

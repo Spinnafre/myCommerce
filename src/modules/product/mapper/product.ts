@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import {v4 as uuid4} from 'uuid'
 import { Category } from "../../categories/mapper/categories";
 import { IProduct } from "../Protocols/IProduct";
@@ -10,10 +10,12 @@ export class Product implements IProduct{
     name:string
     @Column()
     price:number
-    @ManyToOne(type=>Category,products=>Product)
-    category:Category
+    @Column()
+    qtd:number
     @CreateDateColumn()
     created_at:Date
+    @UpdateDateColumn()
+    updated_at:Date
     constructor(){
         if(!this.id){
             this.id=uuid4()

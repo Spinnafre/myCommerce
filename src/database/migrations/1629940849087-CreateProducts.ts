@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table, TableColumn, TableForeignKey } from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreateProducts1629940849087 implements MigrationInterface {
 
@@ -23,6 +23,11 @@ export class CreateProducts1629940849087 implements MigrationInterface {
                         type: "decimal",
                     },
                     {
+                        name: "qtd",
+                        type: "integer",
+                        isNullable: false,
+                    },
+                    {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()",
@@ -37,19 +42,19 @@ export class CreateProducts1629940849087 implements MigrationInterface {
                 ],
             }
         ))
-        await queryRunner.addColumn('products',new TableColumn({
-            name:"category_id",
-            type:"uuid",
-            isNullable:true
-        }))
+        // await queryRunner.addColumn('products',new TableColumn({
+        //     name:"category_id",
+        //     type:"uuid",
+        //     isNullable:true
+        // }))
 
-        await queryRunner.createForeignKey('products',new TableForeignKey({
-            name:"FkCategory",
-            columnNames:['category_id'],
-            referencedColumnNames:['id'],
-            referencedTableName:'categories',
-            onDelete:'CASCADE'
-        }))
+        // await queryRunner.createForeignKey('products',new TableForeignKey({
+        //     name:"FkCategory",
+        //     columnNames:['category_id'],
+        //     referencedColumnNames:['id'],
+        //     referencedTableName:'categories',
+        //     onDelete:'CASCADE'
+        // }))
 
     }
 

@@ -1,5 +1,6 @@
 {
   "name": "myCommerce",
+  "email":"davispenha@gmail.com",
   "version": "1.0.0",
   "description": "Projeto desenvolvido visando aplicar conceitos de banco de dados com Node.",
   "main": "index.js",
@@ -10,10 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Spinnafre/myCommerce.git"
+    "url": "https://github.com/Spinnafre/myCommerce.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Spinnafre (Davi Silva da Penha)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Spinnafre/myCommerce/issues"

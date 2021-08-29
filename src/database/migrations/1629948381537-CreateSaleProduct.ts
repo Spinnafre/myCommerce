@@ -8,10 +8,10 @@ export class CreateSaleProduct1629948381537 implements MigrationInterface {
                 name: "sale_product",
                 columns: [
                     {
-                        name: "id",
+                        name: "sale_id",
                         type: "uuid",
                         isNullable: false,
-                        isPrimary: true,
+                        isPrimary:true,
                     },
                     {
                         name: "qtd",
@@ -35,14 +35,23 @@ export class CreateSaleProduct1629948381537 implements MigrationInterface {
         await queryRunner.addColumn('sale_product',new TableColumn({
             name:"product_id",
             type:"uuid",
-            isNullable:false
+            isNullable:false,
+            isPrimary:true
         }))
 
         await queryRunner.createForeignKey('sale_product',new TableForeignKey({
             name:"FkProduct",
             columnNames:['product_id'],
             referencedTableName:'products',
-            referencedColumnNames:['id']
+            referencedColumnNames:['id'],
+            onDelete:"CASCADE"
+        }))
+        await queryRunner.createForeignKey('sale_product',new TableForeignKey({
+            name:"FkSale",
+            columnNames:['sale_id'],
+            referencedTableName:'sales',
+            referencedColumnNames:['id'],
+            onDelete:"CASCADE"
         }))
     }
 

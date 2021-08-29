@@ -8,6 +8,12 @@ export class CreateProductCategory1629948406079 implements MigrationInterface {
                 name: "product_category",
                 columns: [
                     {
+                        name: "id",
+                        type: "uuid",
+                        isNullable: false,
+                        
+                    },
+                    {
                         name: "product_id",
                         type: "uuid",
                         isNullable: false,
@@ -32,17 +38,17 @@ export class CreateProductCategory1629948406079 implements MigrationInterface {
                 foreignKeys: [
                     {
                         name: "FkProduct",
-                        columnNames: ['product_id'],
                         referencedTableName: 'products',
                         referencedColumnNames: ['id'],
+                        columnNames: ['product_id'],
                         onUpdate:"CASCADE",
                         onDelete:"CASCADE"
                     },
                     {
                         name: "FkCategory",
-                        columnNames: ['category_id'],
                         referencedTableName: 'categories',
                         referencedColumnNames: ['id'],
+                        columnNames: ['category_id'],
                         onUpdate:"CASCADE",
                         onDelete:"CASCADE"
                     }
