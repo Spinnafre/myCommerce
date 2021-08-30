@@ -6,6 +6,6 @@ export class ShowCategoryController{
     async handle(req: Request, res: Response):Promise<Response>{
         const {id}=req.params
         const category=await this.showCategoryUserCase.execute(id)
-        return res.status(200).json({msg:category})
+        return res.status(200).json(category)
     }
 }

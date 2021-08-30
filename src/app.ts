@@ -1,6 +1,7 @@
 import express, { NextFunction, Request, Response } from 'express';
 import "express-async-errors";
-// import swaggerUi from "swagger-ui-express";
+import swaggerUi from "swagger-ui-express";
+import swaggerFile from '../src/swagger.json'
 import cors from "cors";
 import "reflect-metadata";
 
@@ -28,6 +29,7 @@ app.use(authRouter)
 app.use(productRouter)
 app.use(categoryRouter)
 app.use(salesRouter)
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 
 app.use((err:Error, req:Request, res: Response,next:NextFunction) => {

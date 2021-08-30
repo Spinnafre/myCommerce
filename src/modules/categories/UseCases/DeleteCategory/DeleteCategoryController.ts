@@ -6,6 +6,6 @@ export class DeleteCategoryController{
     async handle(req: Request, res: Response):Promise<Response>{
         const {id}=req.params
         await this.deleCategoryUserCase.execute(id)
-        return res.status(200).json({msg:`Category with id ${id} deleted`})
+        return res.status(200).json({msg:`Category deleted`})
     }
 }
