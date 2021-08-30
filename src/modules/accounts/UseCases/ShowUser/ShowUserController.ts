@@ -8,6 +8,6 @@ export class ShowUserController implements IShowUserController{
     async handle(req: Request, res: Response):Promise<Response>{
         const {id}=req.user
         const users=await this.showUserUserCase.execute(id)
-        return res.status(200).json({msg:users})
+        return res.status(200).json(users)
     }
 }
