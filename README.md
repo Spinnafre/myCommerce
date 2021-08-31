@@ -66,6 +66,7 @@ $ npm start
 $ npm run migration:run
 
 ```
+Para abrir a documentação da aplicação e conseguir interagir com as rotas é só acessar o endereço http://localhost:3333/api-docs/ com a aplicação rodando na máquina local.
 
 ## **:star2: COLABORADOR**
 
