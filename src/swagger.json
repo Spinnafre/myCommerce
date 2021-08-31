@@ -2163,6 +2163,27 @@
               }
             }
           },
+          "400": {
+            "description": "Sale not exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Sale not exists"
+                  }
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal error",
             "content": {
