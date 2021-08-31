@@ -9,7 +9,9 @@ Projeto desenvolvido visando aplicar conceitos de banco de dados com Node.
 <h1 align="center">
   <img  src="https://github.com/Spinnafre/myCommerce/blob/main/showcase/game.gif" alt="gif do app" width=60% height=60%>
 </h1>
-<iframe src="https://www.youtube.com/watch?v=No81WSipttU" title="Vídeo explicativo"></iframe>
+
+Video explicando o projeto: https://www.youtube.com/watch?v=No81WSipttU
+
 ## **:computer: TECNOLOGIAS**
 
 #### **Server** ([NodeJS][node])
