@@ -6,6 +6,6 @@ export class AuthUserController{
     async handle(req: Request, res: Response):Promise<Response>{
         const {email, password} = req.body
         const token=await this.authUserCase.execute({email, password})
-        return res.status(201).json({msg:token})
+        return res.status(201).json(token)
     }
 }

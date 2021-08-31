@@ -8,6 +8,6 @@ export class DeleteUserController{
     async handle(req: Request, res: Response):Promise<Response>{
         const {id}=req.params
         await this.DeleteUserUserCase.execute(id)
-        return res.status(200).json({msg:`User with id ${id} deleted`})
+        return res.status(200).json({msg:`User deleted`})
     }
 }

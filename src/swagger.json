@@ -47,10 +47,88 @@
         },
         "responses": {
           "201": {
-            "msg": "Category created successfully"
+            "description": "Category created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Category created successfully"
+                  }
+                }
+              }
+            }
           },
           "500": {
-            "msg": "Category already exists"
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Error message"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Category already exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Category already exists"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No authorization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "No authorization"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -82,7 +160,37 @@
                       "updated_at": {
                         "type": "string"
                       }
+                    },
+                    "example": {
+                      "id": "b1f81477-c98f-4f5e-808c-5fb2ff2214b3",
+                      "name": "NOVO",
+                      "created_at": "2021-08-30T20:48:02.239Z",
+                      "updated_at": "2021-08-30T20:48:02.239Z"
                     }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Error message"
                   }
                 }
               }
@@ -119,10 +227,67 @@
                   "items": {
                     "type": "object",
                     "properties": {
+                      "id": {
+                        "type": "string"
+                      },
                       "name": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
                         "type": "string"
                       }
                     }
+                  },
+                  "example": {
+                    "id": "b1f81477-c98f-4f5e-808c-5fb2ff2214b3",
+                    "name": "NOVO",
+                    "created_at": "2021-08-30T20:48:02.239Z",
+                    "updated_at": "2021-08-30T20:48:02.239Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Category not exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Category not exists"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Error message"
                   }
                 }
               }
@@ -154,7 +319,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Product deleted",
             "content": {
               "application/json": {
                 "schema": {
@@ -166,13 +331,16 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "example": {
+                    "msg": "Product deleted"
                   }
                 }
               }
             }
           },
           "400": {
-            "description": "Error",
+            "description": "Product not exists",
             "content": {
               "application/json": {
                 "schema": {
@@ -184,6 +352,30 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "example": {
+                    "msg": "Product not exists"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No authorization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "No authorization"
                   }
                 }
               }
@@ -238,10 +430,67 @@
         },
         "responses": {
           "201": {
-            "msg": "User created successfully"
+            "description": "User created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "User created successfully"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "User already exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "User already exists"
+                  }
+                }
+              }
+            }
           },
           "500": {
-            "msg": "User already exists"
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Internal error"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -297,7 +546,167 @@
             }
           },
           "400": {
-            "msg": "Error"
+            "description": "Error"
+          },
+          "401": {
+            "description": "No authorization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "No authorization"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Patch user",
+        "description": "Patch user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "confirmPassword": {
+                    "type": "string"
+                  },
+                  "isAdmin": {
+                    "type": "boolean"
+                  }
+                },
+                "example": {
+                  "name": "Mr X",
+                  "username": "MRX",
+                  "address": "Rua 8, nº 40",
+                  "email": "mrx@gmail.com",
+                  "password": "123",
+                  "confirmPassword": "123",
+                  "isAdmin": true
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "User updated successfully"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "User not exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "User not exists"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No authorization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "No authorization"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Error message"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -360,13 +769,83 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "example": {
+                    "id": "b3395b98-b2b4-4014-89fd-430019353dec",
+                    "name": "Davi Silva da Penha",
+                    "username": "Spin",
+                    "address": "Rua 8, nº 40",
+                    "email": "mrspinnafre@gmai.com",
+                    "password": "$2b$08$Uq7ZLpQYFe0Vo5Lxi8t9MeR.PltFW0.9wg7L2OT1X7Z7qJKQXP5EK",
+                    "isAdmin": true,
+                    "created_at": "2021-08-30T20:41:20.248Z"
                   }
                 }
               }
             }
           },
           "400": {
-            "msg": "Error"
+            "description": "User not exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "User not exists"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No authorization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "No authorization"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Error message"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -406,13 +885,16 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "example":{
+                    "msg":"User deleted"
                   }
                 }
               }
             }
           },
           "400": {
-            "description": "Error",
+            "description": "User not exists",
             "content": {
               "application/json": {
                 "schema": {
@@ -424,45 +906,16 @@
                         "type": "string"
                       }
                     }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "User"
-        ],
-        "summary": "Patch user",
-        "description": "Patch user",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "msg": {
-                        "type": "string"
-                      }
-                    }
+                  },
+                  "example": {
+                    "msg": "User not exists"
                   }
                 }
               }
             }
           },
-          "400": {
-            "description": "Error",
+          "401": {
+            "description": "No authorization",
             "content": {
               "application/json": {
                 "schema": {
@@ -474,6 +927,30 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "example": {
+                    "msg": "No authorization"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Error message"
                   }
                 }
               }
@@ -512,10 +989,76 @@
         },
         "responses": {
           "201": {
-            "msg": "Session created successfully"
+            "description": "Session created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "user": {
+                        "type": "object",
+                        "properties":{
+                          "name":"string",
+                          "email":"string"
+                        }
+                      },
+                      "token":"string"
+                    }
+                  },
+                  "example": {
+                    "user": {
+                      "name": "Davi Silva da Penha",
+                      "email": "mrspinnafre@gmai.com"
+                    },
+                    "token": "xxxx"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Email or Password errors",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Email or Password errors"
+                  }
+                }
+              }
+            }
           },
           "500": {
-            "msg": "Error"
+            "description": "Internal Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Error message"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -950,10 +1493,88 @@
         },
         "responses": {
           "201": {
-            "msg": "Product created successfully"
+            "description": "Sale created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Sale created successfully"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Sale error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Sale error"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No authorization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "No authorization"
+                  }
+                }
+              }
+            }
           },
           "500": {
-            "msg": "Error"
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Error message"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -1064,8 +1685,47 @@
               }
             }
           },
-          "400": {
-            "msg": "Error"
+          "401": {
+            "description": "No authorization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "No authorization"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Error message"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -1189,7 +1849,67 @@
             }
           },
           "400": {
-            "msg": "Error"
+            "description": "Sale not exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Sale not exists"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No authorization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "No authorization"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Error message"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -1216,8 +1936,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Sale deleted",
             "content": {
               "application/json": {
                 "schema": {
@@ -1229,13 +1949,16 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "example": {
+                    "msg": "Sale deleted"
                   }
                 }
               }
             }
           },
           "400": {
-            "description": "Error",
+            "description": "Sale not exists",
             "content": {
               "application/json": {
                 "schema": {
@@ -1247,6 +1970,51 @@
                         "type": "string"
                       }
                     }
+                  },
+                  "example": {
+                    "msg": "Sale not exists"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No authorization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "No authorization"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Error message"
                   }
                 }
               }
@@ -1374,8 +2142,47 @@
               }
             }
           },
-          "400": {
-            "msg": "Error"
+          "401": {
+            "description": "No authorization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "No authorization"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": {
+                    "msg": "Error message"
+                  }
+                }
+              }
+            }
           }
         }
       }
