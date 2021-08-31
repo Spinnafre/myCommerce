@@ -7,7 +7,7 @@ export class ShowProductController{
     async handle(req: Request, res: Response):Promise<Response>{
         const {id}=req.params
         const product=await this.showProductUserCase.execute(id)
-        return res.status(201).json({product})
+        return res.status(201).json(product)
     }
 
 }

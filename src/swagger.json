@@ -98,11 +98,6 @@
         ],
         "summary": "List category",
         "description": "List category",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
         "parameters": [
           {
             "name": "id",
@@ -256,6 +251,11 @@
         ],
         "summary": "List all users",
         "description": "List all users",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -482,7 +482,7 @@
         }
       }
     },
-    "/session":{
+    "/session": {
       "post": {
         "tags": [
           "User"
@@ -495,32 +495,16 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "username": {
-                    "type": "string"
-                  },
-                  "address": {
-                    "type": "string"
-                  },
                   "email": {
                     "type": "string"
                   },
                   "password": {
                     "type": "string"
-                  },
-                  "isAdmin": {
-                    "type": "boolean"
                   }
                 },
                 "example": {
-                  "name": "Mr X",
-                  "username": "MRX",
-                  "address": "Rua 8, nº 40",
                   "email": "mrx@gmail.com",
-                  "password": "123",
-                  "isAdmin": true
+                  "password": "123"
                 }
               }
             }
@@ -528,10 +512,870 @@
         },
         "responses": {
           "201": {
-            "msg": "User created successfully"
+            "msg": "Session created successfully"
           },
           "500": {
-            "msg": "User already exists"
+            "msg": "Error"
+          }
+        }
+      }
+    },
+    "/product": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Create new product",
+        "description": "Create new product with category already created",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "qtd": {
+                    "type": "number"
+                  },
+                  "category_id": {
+                    "type": "array"
+                  }
+                },
+                "example": {
+                  "name": "PS4",
+                  "price": 3000,
+                  "qtd": 600,
+                  "category_id": [
+                    "cbeee437-c2e7-4ceb-8904-28c0c3d5b392"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "msg": "Product created successfully"
+          },
+          "500": {
+            "msg": "Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "List all products",
+        "description": "List all products",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      },
+                      "products": {
+                        "type": "object",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "price": {
+                              "type": "number"
+                            },
+                            "qtd": {
+                              "type": "number"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "categories": {
+                        "type": "object",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "example": {
+                      "id": "5b7f485a-7c40-4cca-9d46-466f24b6b4d0",
+                      "created_at": "2021-08-30T22:39:32.255Z",
+                      "updated_at": "2021-08-30T22:39:32.255Z",
+                      "products": {
+                        "id": "013ada0d-3496-427c-a531-bd023759b2a8",
+                        "name": "PS4",
+                        "price": "3000",
+                        "qtd": 600,
+                        "created_at": "2021-08-30T22:39:32.241Z",
+                        "updated_at": "2021-08-30T22:39:32.241Z"
+                      },
+                      "categories": {
+                        "id": "b1f81477-c98f-4f5e-808c-5fb2ff2214b3",
+                        "name": "NOVO",
+                        "created_at": "2021-08-30T20:48:02.239Z",
+                        "updated_at": "2021-08-30T20:48:02.239Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "msg": "Error"
+          }
+        }
+      }
+    },
+    "/product/{id}": {
+      "patch": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Update product",
+        "description": "Update product",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Sale Id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "qtd": {
+                    "type": "number"
+                  },
+                  "category_id": {
+                    "type": "array"
+                  }
+                },
+                "example": {
+                  "name": "PS4",
+                  "price": 3000,
+                  "qtd": 600,
+                  "category_id": [
+                    "cbeee437-c2e7-4ceb-8904-28c0c3d5b392"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "msg": "Product updated successfully"
+          },
+          "500": {
+            "msg": "Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "List product",
+        "description": "List product",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Category Id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      },
+                      "products": {
+                        "type": "object",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "price": {
+                              "type": "number"
+                            },
+                            "qtd": {
+                              "type": "number"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "categories": {
+                        "type": "object",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "example": {
+                      "id": "5b7f485a-7c40-4cca-9d46-466f24b6b4d0",
+                      "created_at": "2021-08-30T22:39:32.255Z",
+                      "updated_at": "2021-08-30T22:39:32.255Z",
+                      "products": {
+                        "id": "013ada0d-3496-427c-a531-bd023759b2a8",
+                        "name": "PS4",
+                        "price": "3000",
+                        "qtd": 600,
+                        "created_at": "2021-08-30T22:39:32.241Z",
+                        "updated_at": "2021-08-30T22:39:32.241Z"
+                      },
+                      "categories": {
+                        "id": "b1f81477-c98f-4f5e-808c-5fb2ff2214b3",
+                        "name": "NOVO",
+                        "created_at": "2021-08-30T20:48:02.239Z",
+                        "updated_at": "2021-08-30T20:48:02.239Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "msg": "Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Delete product",
+        "description": "Delete product",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Product Id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sales": {
+      "post": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "Create new sale",
+        "description": "Create new sale with product already created",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "date": {
+                    "type": "string"
+                  },
+                  "product_id": {
+                    "type": "number"
+                  },
+                  "qtd": {
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "date": "2021-08-28T19:26:13.364Z",
+                  "product_id": "562c679a-0596-4e44-9a61-09cebd66063f",
+                  "qtd": 50
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "msg": "Product created successfully"
+          },
+          "500": {
+            "msg": "Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "List all sales",
+        "description": "List all sales",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "product_id": {
+                        "type": "string"
+                      },
+                      "sale_id": {
+                        "type": "string"
+                      },
+                      "qtd": {
+                        "type": "number"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      },
+                      "sales": {
+                        "type": "object",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "date": {
+                              "type": "string"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "products": {
+                        "type": "object",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "price": {
+                              "type": "number"
+                            },
+                            "qtd": {
+                              "type": "number"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "example": {
+                      "id": "5b7f485a-7c40-4cca-9d46-466f24b6b4d0",
+                      "created_at": "2021-08-30T22:39:32.255Z",
+                      "updated_at": "2021-08-30T22:39:32.255Z",
+                      "products": {
+                        "id": "013ada0d-3496-427c-a531-bd023759b2a8",
+                        "name": "PS4",
+                        "price": "3000",
+                        "qtd": 600,
+                        "created_at": "2021-08-30T22:39:32.241Z",
+                        "updated_at": "2021-08-30T22:39:32.241Z"
+                      },
+                      "categories": {
+                        "id": "b1f81477-c98f-4f5e-808c-5fb2ff2214b3",
+                        "name": "NOVO",
+                        "created_at": "2021-08-30T20:48:02.239Z",
+                        "updated_at": "2021-08-30T20:48:02.239Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "msg": "Error"
+          }
+        }
+      }
+    },
+    "/sales/{id}": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "List sale",
+        "description": "List sale",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Sale Id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "product_id": {
+                      "type": "string"
+                    },
+                    "sale_id": {
+                      "type": "string"
+                    },
+                    "qtd": {
+                      "type": "number"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    },
+                    "products": {
+                      "type": "object",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "price": {
+                            "type": "number"
+                          },
+                          "qtd": {
+                            "type": "number"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "sales": {
+                      "type": "object",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "date": {
+                            "type": "string"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "example": {
+                    "product_id": "562c679a-0596-4e44-9a61-09cebd66063f",
+                    "sale_id": "fa6dc794-127f-47fb-b305-d3d18a83eb13",
+                    "qtd": 50,
+                    "created_at": "2021-08-30T23:19:31.452Z",
+                    "updated_at": "2021-08-30T23:19:31.452Z",
+                    "sales": {
+                      "id": "fa6dc794-127f-47fb-b305-d3d18a83eb13",
+                      "date": "2021-08-28T19:26:13.364Z",
+                      "created_at": "2021-08-30T23:19:31.420Z",
+                      "updated_at": "2021-08-30T23:19:31.420Z"
+                    },
+                    "products": {
+                      "id": "562c679a-0596-4e44-9a61-09cebd66063f",
+                      "name": "PS5",
+                      "price": "3000",
+                      "qtd": 550,
+                      "created_at": "2021-08-30T22:53:16.264Z",
+                      "updated_at": "2021-08-30T23:19:31.446Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "msg": "Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "Delete sale",
+        "description": "Delete sale",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Sale Id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sales/product/{id}": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "List all sales",
+        "description": "List all sales",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Sale Id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "product_id": {
+                        "type": "string"
+                      },
+                      "sale_id": {
+                        "type": "string"
+                      },
+                      "qtd": {
+                        "type": "number"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      },
+                      "sales": {
+                        "type": "object",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "date": {
+                              "type": "string"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "products": {
+                        "type": "object",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "price": {
+                              "type": "number"
+                            },
+                            "qtd": {
+                              "type": "number"
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "example": {
+                      "id": "5b7f485a-7c40-4cca-9d46-466f24b6b4d0",
+                      "created_at": "2021-08-30T22:39:32.255Z",
+                      "updated_at": "2021-08-30T22:39:32.255Z",
+                      "products": {
+                        "id": "013ada0d-3496-427c-a531-bd023759b2a8",
+                        "name": "PS4",
+                        "price": "3000",
+                        "qtd": 600,
+                        "created_at": "2021-08-30T22:39:32.241Z",
+                        "updated_at": "2021-08-30T22:39:32.241Z"
+                      },
+                      "categories": {
+                        "id": "b1f81477-c98f-4f5e-808c-5fb2ff2214b3",
+                        "name": "NOVO",
+                        "created_at": "2021-08-30T20:48:02.239Z",
+                        "updated_at": "2021-08-30T20:48:02.239Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "msg": "Error"
           }
         }
       }

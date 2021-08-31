@@ -10,7 +10,7 @@ export class DeleteProductController{
     async handle(req: Request, res: Response):Promise<Response>{
         const {id}=req.params
         await this.deleteproductUserCase.execute(id)
-        return res.status(200).json({msg:`Product with id ${id} deleted`})
+        return res.status(200).json({msg:`Product deleted`})
     }
 
 }
