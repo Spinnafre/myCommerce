@@ -6,8 +6,8 @@ import { Request,Response } from "express";
 export class CreateUserController implements ICreateUserController{
     constructor(private createUserUserCase:ICreateUserUserCase){}
     async handle(req: Request, res: Response):Promise<Response>{
-        const {name,username,address,email,password,isAdmin}=req.body
-        await this.createUserUserCase.execute({name,username,address,email,password,isAdmin})
+        const {name,login,address,email,password,isAdmin}=req.body
+        await this.createUserUserCase.execute({name,login,address,email,password,isAdmin})
         return res.status(201).json({msg:"User created successfully"})
     }
 

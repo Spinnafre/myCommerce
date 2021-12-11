@@ -23,6 +23,10 @@ export class CreateProducts1629940849087 implements MigrationInterface {
                         type: "decimal",
                     },
                     {
+                        name:"img_url",
+                        type:"varchar"
+                    },
+                    {
                         name: "qtd",
                         type: "integer",
                         isNullable: false,

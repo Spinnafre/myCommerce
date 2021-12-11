@@ -1,13 +1,13 @@
 {
   "name": "myCommerce",
-  "email":"davispenha@gmail.com",
+  "email": "davispenha@gmail.com",
   "version": "1.0.0",
   "description": "Projeto desenvolvido visando aplicar conceitos de banco de dados com Node.",
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "typeorm": "ts-node-dev node_modules/typeorm/cli.js",
-    "migration:run":"ts-node-dev --inspect --transpile-only node_modules/typeorm/cli.js migration:run"
+    "migration:run": "ts-node-dev --inspect --transpile-only node_modules/typeorm/cli.js migration:run"
   },
   "repository": {
     "type": "git",
@@ -21,12 +21,14 @@
   },
   "homepage": "https://github.com/Spinnafre/myCommerce#readme",
   "dependencies": {
+    "@types/multer": "^1.4.7",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.4",
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "supertest": "^6.1.3",

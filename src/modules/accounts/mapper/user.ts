@@ -8,7 +8,7 @@ export class Users implements IUser{
     @Column()
     name:string
     @Column()
-    username:string
+    login:string
     @Column()
     address:string
     @Column()

@@ -1,4 +1,5 @@
 import express, { NextFunction, Request, Response } from 'express';
+import {resolve} from 'path'
 import "express-async-errors";
 import swaggerUi from "swagger-ui-express";
 import swaggerFile from '../src/swagger.json'
@@ -12,7 +13,7 @@ import { authRouter } from './routes/authRoute.routes';
 import { productRouter } from './routes/productRoutes.routes';
 import { categoryRouter } from './routes/categoryRoutes.routes';
 import { salesRouter } from './routes/salesRoutes.routes';
-
+import uploadConfig from './config/upload'
 
 createConnection()
 .then(db=>console.log(`Conectado ao ${db.driver.database}`))
@@ -21,6 +22,7 @@ createConnection()
 const app = express();
 
 app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 app.use(cors())
 
 
@@ -31,6 +33,7 @@ app.use(categoryRouter)
 app.use(salesRouter)
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
+app.use('/uploads',express.static(`${uploadConfig.tmpFolder}/products`))
 
 app.use((err:Error, req:Request, res: Response,next:NextFunction) => {
     if(err instanceof AppErros){

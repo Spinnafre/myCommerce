@@ -3,7 +3,7 @@ import { IProduct } from './IProduct';
 
 
 export interface IProductRepository{
-    create({id,name,price,qtd,category_id}:IProduct):Promise<void>,
+    create({id,name,img_url,price,qtd,category_id}:IProduct):Promise<void>,
     updateQtd(product:IProduct):Promise<void>
     show(): Promise<Array<IProductCategory>>,
     findById(id:string): Promise<Array<IProductCategory>>,

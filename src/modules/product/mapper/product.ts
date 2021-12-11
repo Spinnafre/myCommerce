@@ -9,6 +9,8 @@ export class Product implements IProduct{
     @Column()
     name:string
     @Column()
+    img_url: string;
+    @Column()
     price:number
     @Column()
     qtd:number

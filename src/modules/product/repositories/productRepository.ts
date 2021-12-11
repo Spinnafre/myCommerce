@@ -12,8 +12,8 @@ export class ProductRepository implements IProductRepository {
     constructor() {
         this.repository = getRepository(Product)
     }
-    async create({ id, name, price,qtd, category_id }: IProduct): Promise<void> {
-        const product = this.repository.create({ id, name, price,qtd })
+    async create({ id, name, img_url,price,qtd, category_id }: IProduct): Promise<void> {
+        const product = this.repository.create({ id, name,img_url, price,qtd })
         await this.repository.save(product)
 
         const productCategoryRepository = new ProductCategoryRepository()
@@ -68,6 +68,7 @@ export class ProductRepository implements IProductRepository {
         const productCategoryRepository=new ProductCategoryRepository()
 
         const products = await productCategoryRepository.show()
+        console.log(products)
         return products
     }
     async findOneProduct(id: string): Promise<IProduct> {

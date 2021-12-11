@@ -6,7 +6,7 @@ import { IUpdateUsersUserCase } from './../../Protocols/UpdateUser/IUpdateUserUs
 import {egualOrError,checkExists,notExistsOrError} from '../../../../utils/validator'
 export class UpdateUserUserCase implements IUpdateUsersUserCase{
     constructor(private userRepository:IUserRepository){}
-    async execute({id,name,username,address,email,password,confirmPassword,isAdmin}:IUser):Promise<void>{
+    async execute({id,name,login,address,email,password,confirmPassword,isAdmin}:IUser):Promise<void>{
         const user = await this.userRepository.findById(id)
         if(!user){
             throw new AppErros('User not exists')
@@ -14,7 +14,7 @@ export class UpdateUserUserCase implements IUpdateUsersUserCase{
 
         try {
             checkExists<string>(name,'Name is not defined')
-            checkExists<string>(username,'Username is not defined')
+            checkExists<string>(login,'Login is not defined')
             checkExists<string>(address,'Address is not defined')
             checkExists<string>(email,'Email is not defined')
             checkExists<string>(password,'Password is not defined')

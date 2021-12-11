@@ -8,8 +8,8 @@ export class UserRepository implements IUserRepository {
     constructor() {
         this.repository = getRepository(Users)
     }
-    async create({ id,name, username, address, email, password, isAdmin }: IUser): Promise<void> {
-        const user = this.repository.create({ id,name, username, address, email, password, isAdmin })
+    async create({ id,name, login, address, email, password, isAdmin }: IUser): Promise<void> {
+        const user = this.repository.create({ id,name, login, address, email, password, isAdmin })
         await this.repository.save(user)
     }
     async show(): Promise<Array<IUser>> {
